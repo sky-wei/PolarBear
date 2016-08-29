@@ -1,0 +1,42 @@
+﻿1. PolarBear自己写账号管理项目		2013-03-28
+2. 完成时间 2013-05-05
+3. 最终完成时间 2013-05-09
+
+
+create table adminAccount (
+id integer primary key autoincrement,
+name varchar(100) not null,
+password varchar(100) not null,
+createTime varchar(50),
+descr text
+);
+
+insert into adminAccount(name, password, createTime, descr)
+values(?, ?, ?, ?);
+
+delete from adminAccount where id = ?;
+
+update adminAccount set password = ?, descr = ? where id = ?;
+
+select id, name, password, createTime, descr from adminAccount where name = ?;
+
+
+create table userAccount (
+id integer primary key autoincrement,
+adminID integer,
+name varchar(100) not null,
+password varchar(100) not null,
+createTime varchar(50),
+descr text
+);
+
+insert into userAccount(adminID, name, password, createTime, descr)
+values(?, ?, ?, ?, ?);
+
+delete from userAccount where id = ?;
+
+update userAccount set password = ?, descr = ? where id = ?;
+
+select id, adminID, name, password, createTime, descr from userAccount where name = ?;
+
+SELECT COUNT(*) as CNT FROM sqlite_master where type='table' and name='adminAccount'
